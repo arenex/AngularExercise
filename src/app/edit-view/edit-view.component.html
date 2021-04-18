@@ -1,0 +1,107 @@
+<div *ngIf="userData" class="edit-container">
+
+  <button *ngIf="!isSaving" (click)="goToList()" class="cancel-button" mat-flat-button color="primary">Cancel</button>
+  <button *ngIf="!isSaving" (click)="saveRequested()" class="save-button" mat-flat-button color="primary">Save</button>
+  <button *ngIf="isSaving" (click)="goToList()" class="cancel-button" mat-flat-button color="primary">Discard changes</button>
+  <button *ngIf="isSaving" (click)="saveConfirm()" class="save-button" mat-flat-button color="primary">Confirm save</button>
+
+  <div *ngIf="isSaving" class="changes-summary">
+    <h3>Are you sure you want to save the following changes?</h3>
+    <div *ngFor="let summary of changesSummary; let index = index; let first = first; let last = last;">
+      <h4>User id: {{summary.index}}</h4>
+      <div *ngFor="let change of summary.changes;">
+        <p>{{PROP_MAPPING[change.propIndex][2]}} changed from <span class="change">{{change.oldVal}}</span> to <span class="change">{{change.newVal}}</span></p>
+      </div>
+      <mat-divider *ngIf="!last"></mat-divider>
+    </div>
+  </div>
+
+  <div *ngIf="!isSaving">
+    <div *ngFor="let formGroup of formGroups; let index = index; let first = first; let last = last;">
+    <form [formGroup]="formGroup">
+  
+      <mat-form-field appearance="outline">
+        <mat-label> {{PROP_MAPPING[0][2]}} </mat-label>
+        <input formControlName="id" maxlength="30" matInput autocomplete="off">
+      </mat-form-field>
+  
+      <mat-form-field appearance="outline">
+        <mat-label> {{PROP_MAPPING[1][2]}} </mat-label>
+        <input formControlName="name" maxlength="30" matInput autocomplete="off">
+      </mat-form-field>
+  
+      <mat-form-field appearance="outline">
+        <mat-label> {{PROP_MAPPING[2][2]}} </mat-label>
+        <input formControlName="username" maxlength="30" matInput autocomplete="off">
+      </mat-form-field>
+  
+      <mat-form-field appearance="outline">
+        <mat-label> {{PROP_MAPPING[3][2]}} </mat-label>
+        <input formControlName="email" maxlength="30" matInput autocomplete="off">
+      </mat-form-field>
+  
+      <mat-form-field appearance="outline">
+        <mat-label> {{PROP_MAPPING[4][2]}} </mat-label>
+        <input formControlName="street" maxlength="30" matInput autocomplete="off">
+      </mat-form-field>
+      
+      <mat-form-field appearance="outline">
+        <mat-label> {{PROP_MAPPING[5][2]}} </mat-label>
+        <input formControlName="suite" maxlength="30" matInput autocomplete="off">
+      </mat-form-field>
+  
+      <mat-form-field appearance="outline">
+        <mat-label> {{PROP_MAPPING[6][2]}} </mat-label>
+        <input formControlName="city" maxlength="30" matInput autocomplete="off">
+      </mat-form-field>
+  
+      <mat-form-field appearance="outline">
+        <mat-label> {{PROP_MAPPING[7][2]}} </mat-label>
+        <input formControlName="zipcode" maxlength="30" matInput autocomplete="off">
+      </mat-form-field>
+  
+      <mat-form-field appearance="outline">
+        <mat-label> {{PROP_MAPPING[8][2]}} </mat-label>
+        <input formControlName="lat" maxlength="30" matInput autocomplete="off">
+      </mat-form-field>
+  
+      <mat-form-field appearance="outline">
+        <mat-label> {{PROP_MAPPING[9][2]}} </mat-label>
+        <input formControlName="lng" maxlength="30" matInput autocomplete="off">
+      </mat-form-field>
+      
+      <mat-form-field appearance="outline">
+        <mat-label> {{PROP_MAPPING[10][2]}} </mat-label>
+        <input formControlName="phone" maxlength="30" matInput autocomplete="off">
+      </mat-form-field>
+      
+      <mat-form-field appearance="outline">
+        <mat-label> {{PROP_MAPPING[11][2]}} </mat-label>
+        <input formControlName="website" maxlength="30" matInput autocomplete="off">
+      </mat-form-field>
+  
+      <mat-form-field appearance="outline">
+        <mat-label> {{PROP_MAPPING[12][2]}} </mat-label>
+        <input formControlName="companyName" maxlength="30" matInput autocomplete="off">
+      </mat-form-field>
+      
+      <mat-form-field appearance="outline">
+        <mat-label> {{PROP_MAPPING[13][2]}} </mat-label>
+        <input formControlName="catchPhrase" maxlength="60" matInput autocomplete="off">
+      </mat-form-field>
+      
+      <mat-form-field appearance="outline">
+        <mat-label> {{PROP_MAPPING[14][2]}} </mat-label>
+        <input formControlName="bs" maxlength="60" matInput autocomplete="off">
+      </mat-form-field>
+  
+      <div *ngIf="!last">
+        <br>
+        <mat-divider></mat-divider>
+        <br><br>
+      </div>
+    </form>
+
+  </div>
+
+</div> 

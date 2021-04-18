@@ -1,0 +1,25 @@
+.edit-container {
+  margin-top: 6rem;
+  margin-left: 3rem;
+  margin-right: 3rem;
+
+  .cancel-button {
+    margin-bottom: 1.5rem; 
+  }
+  .save-button {
+    margin-bottom: 1.5rem;
+    margin-left: 1rem;
+  }
+
+  mat-form-field {
+    margin: 0;
+    margin-right: 0.5rem;
+  }
+
+  .changes-summary .change {
+    font-weight: 500;
+    text-decoration: underline;
+    font-style: italic;
+  }
+
+}
